@@ -7,46 +7,39 @@
       background: #0f172a;
       color: white;
       text-align: center;
-    }h1 {
-  color: #38bdf8;
-}
-
-#products {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.product {
-  background: #1e293b;
-  padding: 15px;
-  border-radius: 10px;
-  width: 200px;
-}
-
-.product img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-button {
-  margin: 5px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background: #38bdf8;
-  color: black;
-  cursor: pointer;
-}
-
+    }
+    h1 { color: #38bdf8; }
+    #products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .product {
+      background: #1e293b;
+      padding: 15px;
+      border-radius: 10px;
+      width: 200px;
+    }
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    button {
+      margin: 5px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #38bdf8;
+      color: black;
+    }
   </style>
 </head><body><h1>🚀 Ship Kero</h1><div id="products"></div><h2>Cart 🛒</h2>
 <ul id="cart"></ul>
-<h3 id="total">Total: ₹0</h3><button onclick="checkout()">Pay Now 💳</button>
-<button onclick="whatsappOrder()">Order via WhatsApp 📱</button>
+<h3 id="total">Total: ₹0</h3><button onclick="whatsappOrder()">Order via WhatsApp 📱</button>
 
 <script>
+window.onload = function(){
 
 let products = [
   {name: "Bluetooth Earbuds", price: 999, img:"https://images.unsplash.com/photo-1585386959984-a4155224a1ad"},
@@ -70,7 +63,7 @@ products.forEach((p, index) => {
   productDiv.appendChild(div);
 });
 
-function addToCart(index){
+window.addToCart = function(index){
   cart.push(products[index]);
   displayCart();
 }
@@ -89,11 +82,7 @@ function displayCart(){
   document.getElementById("total").innerText = "Total: ₹" + total;
 }
 
-function checkout(){
-  alert("Use WhatsApp to order 📱");
-}
-
-function whatsappOrder(){
+window.whatsappOrder = function(){
   let name = prompt("Enter your name:");
   let address = prompt("Enter your delivery address:");
 
@@ -113,10 +102,10 @@ function whatsappOrder(){
   text += "%0A💰 Total: ₹" + total;
   text += "%0A👤 Name: " + name;
   text += "%0A📍 Address: " + address;
-  text += "%0A%0A✅ Please confirm order";
 
   window.open("https://wa.me/919000883973?text=" + text);
 }
 
+}
 </script></body>
 </html>
