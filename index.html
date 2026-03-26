@@ -60,7 +60,31 @@ function checkout(){
   alert("Razorpay integration next step 🔥");
 }
 
-function whatsappOrder(){
+function whatsappOrder(function whatsappOrder(){
+let name = prompt("Enter your name:");
+let address = prompt("Enter your delivery address:");
+
+if(cart.length === 0){
+alert("Cart is empty!");
+return;
+}
+
+let text = "🛒 New Order - Ship Kero %0A%0A";
+
+let total = 0;
+
+cart.forEach(item => {
+text += "• " + item.name + " - ₹" + item.price + "%0A";
+total += item.price;
+});
+
+text += "%0A💰 Total: ₹" + total;
+text += "%0A👤 Name: " + name;
+text += "%0A📍 Address: " + address;
+text += "%0A%0A✅ Please confirm order";
+
+window.open("https://wa.me/919000883973?text=" + text);
+}){
   let text = "Order:%0A";
   cart.forEach(item => {
     text += item.name + " - ₹" + item.price + "%0A";
